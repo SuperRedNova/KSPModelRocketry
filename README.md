@@ -3,7 +3,7 @@ Scaled up model rocket parts for KSP with variable textures.
 
 Version 0.1.1
 
-For KSP Vesrion .90 (Might work with other versions as well, Untested)
+For KSP Version .90 (Might work with other versions as well, Untested)
 
 Some Kerbal Engineers decided it would be a good Idea to upscale model rocket parts to save money.
 
@@ -54,9 +54,9 @@ Some Kerbal Engineers decided it would be a good Idea to upscale model rocket pa
 
 ##Uninstallation
 
-##Licensing
-
 1. Delete the "ModelRocketry" folder from your GameData directory.
+
+##Licensing
 
 All code is under this MIT License:
 
