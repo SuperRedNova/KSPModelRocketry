@@ -21,4 +21,4 @@
 ## known issues that need to be fixed
 
 * Fin Config file missing some drag parameters
-* Tech tree placement, currently at VERY end, wich isn't ideal
+* Tech tree placement, currently at VERY end, which isn't ideal
