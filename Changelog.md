@@ -8,7 +8,16 @@
 
 
 ## v0.1.2
-***Currently a WIP***
 
 1. Modified Model Kerbal Model.
-2. Fixed weights of most parts.
+2. Fixed weights all parts.
+
+## Possibilities for future
+
+* shock cord
+* launch rod
+* parachute and decoupling for the nosecone
+
+## known issues that need to be fixed
+
+* Fin Config file missing some drag parameters
