@@ -55,3 +55,5 @@ Some Kerbal Engineers decided it would be a good Idea to upscale model rocket pa
 ##Uninstallation
 
 1. Delete the "ModelRocketry" folder from your GameData directory.
+
+##See Licensing.md for licenses
