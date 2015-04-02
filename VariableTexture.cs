@@ -32,9 +32,10 @@ namespace KSPModelRocketry
         public Renderer texRend;
         public Material mat;
 
+        [KSPField]
+        public bool newUV = true;
+
         public float updateDelay = 0;
-
-
 
         /// <summary>
         /// Raises the start event.
@@ -42,45 +43,44 @@ namespace KSPModelRocketry
         /// <param name="state">State.</param>
         public override void OnStart(StartState state)
         {
-            if (textureMesh == null)
-            {
-                textureMesh = part.FindModelComponent<MeshFilter>(textureMeshName).mesh;
-            }
-            if (texRend == null)
-            {
-                texRend = part.FindModelComponent<Renderer>(textureMeshName);
-                mat = new Material(texRend.material.shader);
-            }
             changeColor(true);
-            setUV();
+            setUV(newUV);
+            base.OnStart(state);
         }
 
         /// <summary>
         /// Standardizes the uv coords of the mesh.
         /// </summary>
-        private void setUV()
+        private void setUV(bool newUV)
         {
-            Vector2[] uvs = new Vector2[textureMesh.vertices.Length];
-            for (int i = 0; i < uvs.Length; i++)
+            if (textureMesh == null)
             {
-                int j = i % 4;
-                switch (j)
-                {
-                    case 0:
-                        uvs[i] = Vector2.zero;
-                        break;
-                    case 1:
-                        uvs[i] = Vector2.up;
-                        break;
-                    case 2:
-                        uvs[i] = Vector2.right;
-                        break;
-                    case 3:
-                        uvs[i] = Vector2.one;
-                        break;
-                }
+                textureMesh = part.FindModelComponent<MeshFilter>(textureMeshName).mesh;
             }
-            textureMesh.uv = uvs;
+            if (newUV)
+            {
+                Vector2[] uvs = new Vector2[textureMesh.vertices.Length];
+                for (int i = 0; i < uvs.Length; i++)
+                {
+                    int j = i % 4;
+                    switch (j)
+                    {
+                        case 0:
+                            uvs[i] = Vector2.zero;
+                            break;
+                        case 1:
+                            uvs[i] = Vector2.up;
+                            break;
+                        case 2:
+                            uvs[i] = Vector2.right;
+                            break;
+                        case 3:
+                            uvs[i] = Vector2.one;
+                            break;
+                    }
+                }
+                textureMesh.uv = uvs;
+            }
         }
 
         /// <summary>
@@ -102,9 +102,14 @@ namespace KSPModelRocketry
         /// <summary>
         /// Changes the color of a mesh of a part implementing this PartModlue based on it's red, green, and blue values.
         /// </summary>
-        void changeColor(Boolean fromOnStart = false)
+        public void changeColor(Boolean forceChange = false)
         {
-            if (red != r | green != g | blue != b | fromOnStart)
+            if (texRend == null)
+            {
+                texRend = part.FindModelComponent<Renderer>(textureMeshName);
+                mat = new Material(texRend.material.shader);
+            }
+            if (red != r | green != g | blue != b | forceChange)
             {
                 r = red;
                 g = green;
@@ -120,9 +125,9 @@ namespace KSPModelRocketry
                 tex.Apply();
                 mat.mainTexture = tex;
                 texRend.material = mat;
-                if (fromOnStart)
+                if (forceChange)
                 {
-                    print("[VariableTexture]:Changing Color!" +color);
+                    print("[VariableTexture]:Changing Color! " +color);
                 }
             }
         }
