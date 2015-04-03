@@ -37,6 +37,7 @@ namespace KSPModelRocketry
 
         public float updateDelay = 0;
 
+
         /// <summary>
         /// Raises the start event.
         /// </summary>
