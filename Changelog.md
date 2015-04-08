@@ -12,6 +12,13 @@
 1. Modified Model Kerbal Model.
 2. Fixed weights all parts.
 
+## v0.1.3
+
+1. Fixed part preview colors
+2. consolidated some textures to reduce loading times
+3. fixed tech tree placement
+4. fixed Fin drag parameters
+
 ## Possibilities for future
 
 * shock cord
@@ -20,5 +27,4 @@
 
 ## known issues that need to be fixed
 
-* Fin Config file missing some drag parameters
-* Tech tree placement, currently at VERY end, which isn't ideal
+* None that I know of. Go [here](https://github.com/SuperRedNova/KSPModelRocketry/issues) to submit a new issue.
