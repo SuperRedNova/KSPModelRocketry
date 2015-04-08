@@ -1,7 +1,7 @@
 # KSPModelRocketry
 Scaled up model rocket parts for KSP with variable textures.
 
-Version 0.1.2
+Version 0.1.3
 
 For KSP Version .90 (Might work with other versions as well, Untested)
 
