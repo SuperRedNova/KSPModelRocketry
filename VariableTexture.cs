@@ -8,28 +8,43 @@ namespace KSPModelRocketry
 {
     public class VariableTexture : PartModule
     {
-        [KSPField(guiActiveEditor = true, guiName = "Red", guiFormat = "F2", isPersistant = true)]
+        [KSPField(guiActiveEditor = true, guiName = "Red", guiFormat = "F2")]
         [UI_FloatRange(minValue = 0, maxValue = 1, stepIncrement = .05f)]
         public float red = 1f;
-        private float r;
+        [KSPField(isPersistant = true)]
+        private float red1;
+        [KSPField(isPersistant = true)]
+        private float red2 = 0f;
 
-        [KSPField(guiActiveEditor = true, guiName = "Green", guiFormat = "F2", isPersistant = true)]
+        [KSPField(guiActiveEditor = true, guiName = "Green", guiFormat = "F2")]
         [UI_FloatRange(minValue = 0, maxValue = 1, stepIncrement = .05f)]
         public float green = 1f;
-        private float g;
+        [KSPField(isPersistant = true)]
+        private float green1;
+        [KSPField(isPersistant = true)]
+        private float green2 = 0f;
 
-        [KSPField(guiActiveEditor = true, guiName = "Blue", guiFormat = "F2", isPersistant = true)]
+        [KSPField(guiActiveEditor = true, guiName = "Blue", guiFormat = "F2")]
         [UI_FloatRange(minValue = 0, maxValue = 1, stepIncrement = .05f)]
         public float blue = 1f;
-        private float b;
+        [KSPField(isPersistant = true)]
+        private float blue1;
+        [KSPField(isPersistant = true)]
+        private float blue2 = 0f;
 
         [KSPField]
         public string textureMeshName = "Variable";
         private Renderer texRend;
         private Material mat;
 
+        [KSPField(guiActiveEditor = true, guiName = "Edit Color:", isPersistant = true)]
+        [UI_Toggle(enabledText="Primary",disabledText="Secondary")]
+        public bool switchColor = true;
+        private bool swtclr;
+
         [KSPField(guiActiveEditor = true, guiName = "Pattern", isPersistant = true),
-        KSPAPIExtensions.UI_ChooseOption(options = new string[] { "Plain", "Quarter", "Checker", "Half" })]
+        KSPAPIExtensions.UI_ChooseOption(options = new string[] { "Plain", "Quarter 1", "Quarter 2",
+            "Quarter 3", "Quarter 4", "Checker", "Half" })]
         public string texturePattern = "Plain";
         private string texpat = "";
 
@@ -55,14 +70,28 @@ namespace KSPModelRocketry
         /// </summary>
         public void Update()
         {
-            if ((HighLogic.LoadedSceneIsEditor || HighLogic.LoadedSceneIsFlight) &&
-                (red != r || green != g || blue != b || !texturePattern.Equals(texpat) || textureRepeat != texRep))
+            if (switchColor != swtclr)
             {
-                if (red != r) print("red");
-                if (green != g) print("green");
-                if (blue != b) print("blue");
-                if (!texturePattern.Equals(texpat)) print("texturePattern");
-                if (textureRepeat != texRep) print("textureRepeat");
+                if (switchColor)
+                {
+                    red = red1;
+                    green = green1;
+                    blue = blue1;
+                    swtclr = switchColor;
+                }
+                else
+                {
+                    red = red2;
+                    green = green2;
+                    blue = blue2;
+                    swtclr = switchColor;
+                }
+            }
+            if ((HighLogic.LoadedSceneIsEditor || HighLogic.LoadedSceneIsFlight) &&
+                ((switchColor ? red != red1 || green != green1 || blue != blue1 :
+                red != red2 || green != green2 || blue != blue2) || 
+                (!texturePattern.Equals(texpat) || textureRepeat != texRep)))
+            {
                 setPattern();
                 setColor();
             }
@@ -78,10 +107,18 @@ namespace KSPModelRocketry
                 texRend = part.FindModelComponent<Renderer>(textureMeshName);
                 mat = new Material(texRend.material.shader);
             }
-            r = red;
-            g = green;
-            b = blue;
-            Color color = new Color(r, g, b);
+            if (switchColor)
+            {
+                red1 = red;
+                green1 = green;
+                blue1 = blue;
+            }
+            else
+            {
+                red2 = red;
+                green2 = green;
+                blue2 = blue;
+            }
             Texture2D tex = new Texture2D(2 * (int)textureRepeat, 2);
             Color[] colors = new Color[tex.height * tex.width];
             for (int i = 0; i < 2; i++)
@@ -93,11 +130,11 @@ namespace KSPModelRocketry
                         int index = (2 * k) + j + (2 * i * (int)textureRepeat);
                         if (pattern[i, j])
                         {
-                            colors[index] = Color.black;
+                            colors[index] = new Color(red2, green2, blue2);
                         }
                         else
                         {
-                            colors[index] = color;
+                            colors[index] = new Color(red1, green1, blue1);
                         }
 
                     }
@@ -122,12 +159,29 @@ namespace KSPModelRocketry
                     pattern[1, 0] = false;
                     pattern[1, 1] = true;
                     break;
-                case "Quarter":
+                case "Quarter 1":
                     pattern[0, 0] = true;
                     pattern[0, 1] = false;
                     pattern[1, 0] = false;
                     pattern[1, 1] = false;
                     break;
+                case "Quarter 2":
+                    pattern[0, 0] = false;
+                    pattern[0, 1] = false;
+                    pattern[1, 0] = false;
+                    pattern[1, 1] = true;
+                    break;
+                case "Quarter 3":
+                    pattern[0, 0] = false;
+                    pattern[0, 1] = false;
+                    pattern[1, 0] = true;
+                    pattern[1, 1] = false;
+                    break;
+                case "Quarter 4":
+                    pattern[0, 0] = false;
+                    pattern[0, 1] = true;
+                    pattern[1, 0] = false;
+                    pattern[1, 1] = false;
                     break;
                 case "Half":
                     pattern[0, 0] = true;
