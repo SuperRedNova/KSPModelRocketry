@@ -1,7 +1,7 @@
 # KSPModelRocketry
 Scaled up model rocket parts for KSP with variable textures.
 
-Version 0.1.3
+Version 0.1.4
 
 For KSP Version .90 (Might work with other versions as well, Untested)
 
@@ -12,7 +12,7 @@ Some Kerbal Engineers decided it would be a good Idea to upscale model rocket pa
 ##Features
 
 * Scaled Up Model Rocket parts
-* A PartModule that allows you to change the color of some of the parts
+* A PartModule that allows you to change the color of some of the parts ***Now lets you set a pattern between two colors***
 
 ##Parts
 
@@ -44,7 +44,7 @@ Some Kerbal Engineers decided it would be a good Idea to upscale model rocket pa
 
     *Keeps things going straight... ish.*
 
-\* \- Denotes a part that you can change the color of.
+\* \- Denotes a part that you can change the color *(and now pattern)* of.
 
 ##Installation
 
