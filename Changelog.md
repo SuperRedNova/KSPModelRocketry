@@ -19,6 +19,10 @@
 3. fixed tech tree placement
 4. fixed Fin drag parameters
 
+## v0.1.4
+
+1. added ability to set a pattern and a second color for the pattern
+
 ## Possibilities for future
 
 * shock cord
@@ -27,4 +31,4 @@
 
 ## known issues that need to be fixed
 
-* None that I know of. Go [here](https://github.com/SuperRedNova/KSPModelRocketry/issues) to submit a new issue.
+* None that I know of. Go [here](https://github.com/SuperRedNova/KSPModelRocketry/issues) to submit a new issue (or a suggestion).
