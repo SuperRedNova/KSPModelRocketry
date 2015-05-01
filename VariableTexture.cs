@@ -32,7 +32,7 @@ namespace KSPModelRocketry
 
         [KSPField(guiActiveEditor = true, guiName = "Pattern", isPersistant = true),
         KSPAPIExtensions.UI_ChooseOption(options = new string[] { "Plain", "Quarter 1", "Quarter 2",
-            "Quarter 3", "Quarter 4", "Checker", "Half" })]
+            "Quarter 3", "Quarter 4", "Checker", "Half 1", "Half 2"})]
         public string texturePattern = "Plain";
         private string texpat = "";
 
@@ -94,7 +94,11 @@ namespace KSPModelRocketry
             c2.AddValue("red", color2.r);
             c2.AddValue("green", color2.g);
             c2.AddValue("blue", color2.b);
-            node.AddNode(c2);
+			node.AddNode(c2);
+			node.RemoveNode ("texturePattern_UIFlight");
+			node.RemoveNode ("textureRepeat_UIFlight");
+			node.RemoveNode ("EVENTS");
+			node.RemoveNode ("ACTIONS");
             base.OnSave(node);
         }
 
@@ -151,7 +155,7 @@ namespace KSPModelRocketry
                     color2.g = green;
                     color2.b = blue;
                 }
-            Texture2D tex = new Texture2D(2 * (int)textureRepeat, 2);
+			Texture2D tex = new Texture2D(2 * (int)textureRepeat, 2, TextureFormat.RGB24, false);
             Color[] colors = new Color[tex.height * tex.width];
             for (int i = 0; i < 2; i++)
             {
@@ -215,12 +219,18 @@ namespace KSPModelRocketry
                     pattern[1, 0] = false;
                     pattern[1, 1] = false;
                     break;
-                case "Half":
+                case "Half 1":
                     pattern[0, 0] = true;
                     pattern[0, 1] = false;
                     pattern[1, 0] = true;
                     pattern[1, 1] = false;
-                    break;
+				break;
+				case "Half 2":
+					pattern[0, 0] = true;
+					pattern[0, 1] = true;
+					pattern[1, 0] = false;
+					pattern[1, 1] = false;
+					break;
                 default:
                     pattern[0, 0] = false;
                     pattern[0, 1] = false;
