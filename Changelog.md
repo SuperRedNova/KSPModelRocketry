@@ -23,6 +23,11 @@
 
 1. added ability to set a pattern and a second color for the pattern
 
+## v0.1.5
+
+1.updated for KSP Version 1.02 (sorry about thinking it was 1.0 ready for v0.1.4)
+2. nerfed the Model Kerbal's control capabilities.
+
 ## Possibilities for future
 
 * shock cord
