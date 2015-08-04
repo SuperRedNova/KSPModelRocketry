@@ -25,15 +25,19 @@
 
 ## v0.1.5
 
-1.updated for KSP Version 1.02 (sorry about thinking it was 1.0 ready for v0.1.4)
+1. updated for KSP Version 1.02 (sorry about thinking it was 1.0 ready for v0.1.4)
 2. nerfed the Model Kerbal's control capabilities.
+
+## v0.1.6
+
+1. updated for KSP Version 1.04
+2. fixed various issues, including missplaced engine mount node.
 
 ## Possibilities for future
 
-* shock cord
-* launch rod
-* parachute and decoupling for the nosecone
+* expect bigger changes to come soon ;)
 
 ## known issues that need to be fixed
 
 * None that I know of. Go [here](https://github.com/SuperRedNova/KSPModelRocketry/issues) to submit a new issue (or a suggestion).
+* 
