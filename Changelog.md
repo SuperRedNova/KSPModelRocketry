@@ -40,4 +40,3 @@
 ## known issues that need to be fixed
 
 * None that I know of. Go [here](https://github.com/SuperRedNova/KSPModelRocketry/issues) to submit a new issue (or a suggestion).
-* 
