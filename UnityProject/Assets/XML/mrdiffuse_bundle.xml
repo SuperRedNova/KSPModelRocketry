@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<KSPBundleDefinition xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" UrlName="mrdiffuse" Name="mrdiffuse" CreatedTime="-8587411870601959017">
+  <Author />
+  <Info />
+  <Assets>
+    <Asset Name="ModelRocketry/Diffuse" Path="Assets/MRDiffuse.shader" Type="Shader" Url="MRDiffuse" AutoLoad="false" />
+  </Assets>
+  <Dependencies>
+    <Dependency>squadcore</Dependency>
+  </Dependencies>
+</KSPBundleDefinition>

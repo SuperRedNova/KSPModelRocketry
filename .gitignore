@@ -1,6 +1,11 @@
 #Autosave files
 *~
 
+#Unity metadata
+*.meta
+UnityProject/Library/
+UnityProject/Temp/
+
 #build
 [Oo]bj/
 [Bb]in/
