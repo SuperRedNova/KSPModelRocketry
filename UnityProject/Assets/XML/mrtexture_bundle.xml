@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<KSPBundleDefinition xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" UrlName="mrtexture" Name="mrtexture" CreatedTime="-8587414248717565646">
-  <Author />
-  <Info />
-  <Assets>
-    <Asset Name="checker" Path="Assets/checker.png" Type="Texture2D" Url="checker" AutoLoad="false" />
-  </Assets>
-  <Dependencies />
-</KSPBundleDefinition>

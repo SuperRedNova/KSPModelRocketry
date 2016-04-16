@@ -3,8 +3,8 @@
 
 #Unity metadata
 *.meta
-UnityProject/Library/
-UnityProject/Temp/
+KSPModelRocketry/Library/
+KSPModelRocketry/Temp/
 
 #build
 [Oo]bj/
